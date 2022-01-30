@@ -41,9 +41,6 @@ namespace unityclass
         {
             Console.WriteLine("필드에 입장하셨습니다!");
             Console.WriteLine("[1] 싸우기");
-            
-           
-
            string input=Console.ReadLine();
             switch(input)
             {
@@ -70,7 +67,7 @@ namespace unityclass
             while(true)
             {
                 int damage;
-                Console.WriteLine("적과 조우 했습니다");
+                Console.WriteLine("\n\n적과 조우 했습니다\n\n");
                 Console.WriteLine("[1]공격하기");
                 Console.WriteLine("[2]스킬사용");
                 Console.WriteLine("[3]도망가기");
@@ -80,11 +77,11 @@ namespace unityclass
                     case "1":
                         damage = player.GetAttack();
                         monster.Ondamaged(damage);
-                        Console.WriteLine($"플레이어는{player.GetAttack()}만큼 데미지를 주었습니다\n몬스터의 남은 체력{monster.GetHp()} ");
-                        Console.WriteLine($"{monster}의 차례!");
+                        Console.WriteLine($"플레이어는{player.GetAttack()}만큼 데미지를 주었습니다\n몬스터의 남은 체력{monster.GetHp()}\n\n ");
+                        Console.WriteLine($"{monster}의 차례!\n");
                         damage = monster.GetAttack();
                         player.Ondamaged(damage);
-                        Console.WriteLine($"플레이어는{monster.GetAttack()}만큼 데미지를 입었습니다\n플레이어의 남은 체력{player.GetHp()}");
+                        Console.WriteLine($"플레이어는{monster.GetAttack()}만큼 데미지를 입었습니다\n플레이어의 남은 체력{player.GetHp()}\n\n");
                         break;
                     case "2":
                         Console.WriteLine("개발중입니다.");
@@ -101,7 +98,16 @@ namespace unityclass
                 }
                 if (monster.Isdead())
                 {
-                    Console.WriteLine("승리했습니다");
+                    Console.WriteLine("승리했습니다!!\n\n");
+                  
+                    Console.WriteLine("전투에 승리하여 체력이 5 만큼 상승하였습니다.");
+                    player.SetHp(player);
+                    int exp = monster.Getexp();
+                    Console.WriteLine($"경험치가 {exp}올랐습니다");
+                    
+                    player.Upexp(exp);
+                    Console.WriteLine($"플레이어의 총 경험치는 {player.Getexp()}입니다.");
+                    player.LevelUp(player);
                     Console.WriteLine("마을로 돌아갑니다.");
                     mode = GameMode.Town;
                     break;
@@ -132,6 +138,7 @@ namespace unityclass
             Console.WriteLine("마을에 입장했습니다!");
             Console.WriteLine("[1] 필드로 가기");
             Console.WriteLine("[2] 로비로 돌아가기") ;
+            
             string input = Console.ReadLine();
             switch (input)
             {
@@ -141,6 +148,7 @@ namespace unityclass
                 case "2":
                     mode = GameMode.Lobby;
                     break;
+                
             }
         }
         public void ProcessLobby()

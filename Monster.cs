@@ -24,21 +24,21 @@ namespace unityclass
     {
         public Slime() : base(MonsterType.Slime)
         {
-            Setinfo(30, 1);
+            Setinfo(30, 1,10);
         }
     }
     class Orc : Monster
     {
         public Orc() : base(MonsterType.Orc)
         {
-            Setinfo(50, 2);
+            Setinfo(50, 2,20);
         }
     }
     class Skeleton : Monster
     {
         public Skeleton() : base(MonsterType.Skeleton)
         { 
-            Setinfo(35, 5);
+            Setinfo(35, 5,15);
         }
     }
 }

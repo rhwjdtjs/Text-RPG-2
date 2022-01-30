@@ -20,21 +20,22 @@ namespace unityclass
     {
         public Knight() :base(PlayerType.Knight)
         {
-            Setinfo(100, 10);
+            Setinfo(100, 10,0);
         }
     }
     class Archer : Player
     {  
         public Archer() : base(PlayerType.Archer)
         {
-            Setinfo(75, 15);
+            Setinfo(75, 15,0);
         }
     }
     class Mage : Player
     {
         public Mage() : base(PlayerType.Mage)
         {
-            Setinfo(50, 20);
+            Setinfo(50, 20,0);
         }
     }
+    
 }
